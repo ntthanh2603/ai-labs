@@ -209,3 +209,4 @@ __marimo__/
 outputs/
 unsloth_compiled_cache/
 gemma2_thanh_lora/
+speech-to-text/whisper.cpp/
