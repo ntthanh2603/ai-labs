@@ -6,34 +6,35 @@
 
 ![Cấu trúc não ngoài - Hình A](image_a.png)
 
-- **Vỏ não trước trán (Prefrontal Cortex)**: Lập kế hoạch, ra quyết định, kiểm soát hành vi
-- **Vỏ não vận động (Motor Cortex)**: Điều khiển chuyển động tự nguyện
-- **Vỏ não cảm giác (Somatosensory Cortex)**: Xử lý thông tin xúc giác, nhiệt độ, đau
-- **Thùy thái dương (Temporal Lobe)**: Xử lý âm thanh, ngôn ngữ, trí nhớ
-- **Thùy đỉnh (Parietal Lobe)**: Xử lý thông tin không gian, tích hợp cảm giác
-- **Thùy chẩm (Occipital Lobe)**: Xử lý thông tin thị giác
-- **Vỏ não Broca**: Sản xuất ngôn ngữ
-- **Vỏ não Wernicke**: Hiểu ngôn ngữ
+1. **Thùy trán (Frontal Lobe)**: Lập kế hoạch, ra quyết định, kiểm soát hành vi (chứa vỏ não trước trán)
+2. **Thùy đỉnh (Parietal Lobe)**: Xử lý thông tin không gian, tích hợp cảm giác
+3. **Thùy chẩm (Occipital Lobe)**: Xử lý thông tin thị giác
+4. **Tiểu não (Cerebellum)**: Điều khiển thăng bằng, phối hợp vận động
+5. **Thùy thái dương (Temporal Lobe)**: Xử lý âm thanh, ngôn ngữ, trí nhớ
+6. **Thân não (Brainstem)**: Điều hòa các chức năng sống cơ bản (nhịp tim, hô hấp)
 
 ### b) Não bên trong - Hệ thống Limbic:
 
 ![Cấu trúc não ngoài - Hình B](image_b.png)
 
-- **Hippocampus**: Hình thành trí nhớ mới, học tập
-- **Amygdala**: Xử lý cảm xúc, đặc biệt là sợ hãi
-- **Thalamus**: Trạm chuyển tiếp thông tin cảm giác
-- **Hypothalamus**: Điều hòa nội tiết, cảm giác đói/khát
-- **Thể chai (Corpus Callosum)**: Kết nối hai bán cầu não
+1. **Amygdala (Hạch hạnh nhân)**: Xử lý cảm xúc, đặc biệt là sợ hãi
+2. **Hypothalamus (Vùng dưới đồi)**: Điều hòa nội tiết, cảm giác đói/khát
+3. **Hippocampus (Hồi hải mã)**: Hình thành trí nhớ mới, học tập
+4. **Thể chai (Corpus Callosum)**: Kết nối hai bán cầu não
+5. **Đồi thị (Thalamus)**: Trạm chuyển tiếp thông tin cảm giác
+6. **Hồi đai (Cingulate Gyrus)**: Xử lý cảm xúc và điều chỉnh hành vi
 
 ### c) Mô hình Wernicke-Geschwind:
 
 ![Cấu trúc não ngoài - Hình C](image_c.png)
 
-- **Vùng Broca**: Sản xuất lời nói
-- **Vùng Wernicke**: Hiểu ngôn ngữ
-- **Fasciculus arcuate**: Kết nối Broca và Wernicke
-- **Vỏ não vận động**: Thực hiện lời nói
-- **Vỏ não thính giác**: Nhận thông tin âm thanh
+1. **Vỏ não vận động**: Thực hiện lời nói
+2. **Vùng Broca**: Sản xuất lời nói
+3. **Vỏ não thính giác**: Nhận thông tin âm thanh
+4. **Vùng Wernicke**: Hiểu ngôn ngữ
+5. **Hồi góc (Angular Gyrus)**: Chuyển đổi thông tin thị giác thành thính giác
+6. **Vỏ não thị giác**: Tiếp nhận thông tin hình ảnh
+7. **Fasciculus arcuate**: Kết nối Broca và Wernicke
 
 ---
 
