@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Assessment Report - {{ system_name }}</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 11pt;
+        line-height: 1.6;
+        color: #1f2937;
+        background: white;
+      }
+
+      .container {
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 20mm;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        border-bottom: 4px solid #1e40af;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      .header h1 {
+        font-size: 28pt;
+        color: #1e40af;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .header .subtitle {
+        font-size: 14pt;
+        color: #6b7280;
+        font-weight: 500;
+      }
+
+      /* Section */
+      .section {
+        margin-bottom: 30px;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        font-size: 18pt;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e5e7eb;
+      }
+
+      .section-icon {
+        margin-right: 8px;
+      }
+
+      /* Executive Summary Box */
+      .summary-box {
+        background: #eff6ff;
+        border-left: 5px solid #1e40af;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+
+      .summary-box p {
+        margin-bottom: 10px;
+        line-height: 1.8;
+      }
+
+      .summary-box strong {
+        color: #1e40af;
+      }
+
+      /* Risk Level Badge */
+      .risk-badge {
+        display: inline-block;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 14pt;
+        margin: 10px 0;
+      }
+
+      .risk-critical {
+        background: #fef2f2;
+        color: #dc2626;
+        border: 2px solid #dc2626;
+      }
+
+      .risk-high {
+        background: #fff7ed;
+        color: #f97316;
+        border: 2px solid #f97316;
+      }
+
+      .risk-medium {
+        background: #fefce8;
+        color: #ca8a04;
+        border: 2px solid #eab308;
+      }
+
+      .risk-low {
+        background: #f0fdf4;
+        color: #16a34a;
+        border: 2px solid #22c55e;
+      }
+
+      /* Score Display */
+      .score-display {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .score-number {
+        font-size: 48pt;
+        font-weight: 700;
+        color: #1e40af;
+      }
+
+      .score-label {
+        font-size: 12pt;
+        color: #6b7280;
+        margin-top: 5px;
+      }
+
+      /* Table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        font-size: 10pt;
+      }
+
+      table thead {
+        background: #1e40af;
+        color: white;
+      }
+
+      table th {
+        padding: 12px 10px;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      table td {
+        padding: 10px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      table tbody tr:hover {
+        background: #f9fafb;
+      }
+
+      .severity-cell {
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .severity-critical {
+        background: #fef2f2;
+        color: #dc2626;
+      }
+
+      .severity-high {
+        background: #fff7ed;
+        color: #f97316;
+      }
+
+      .severity-medium {
+        background: #fefce8;
+        color: #ca8a04;
+      }
+
+      .severity-low {
+        background: #f0fdf4;
+        color: #16a34a;
+      }
+
+      /* Charts */
+      .chart-container {
+        text-align: center;
+        margin: 20px 0;
+        page-break-inside: avoid;
+      }
+
+      .chart-container img {
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto;
+      }
+
+      /* Impact Grid */
+      .impact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 15px 0;
+      }
+
+      .impact-card {
+        background: #f9fafb;
+        padding: 15px;
+        border-radius: 6px;
+        border-left: 4px solid #1e40af;
+      }
+
+      .impact-card h4 {
+        color: #1e40af;
+        margin-bottom: 8px;
+        font-size: 11pt;
+      }
+
+      .impact-card p {
+        color: #4b5563;
+        font-size: 10pt;
+        line-height: 1.6;
+      }
+
+      /* Action Items */
+      .action-item {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 15px;
+        margin-bottom: 12px;
+        border-radius: 4px;
+      }
+
+      .action-item strong {
+        color: #92400e;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .action-meta {
+        font-size: 9pt;
+        color: #78716c;
+        margin-top: 8px;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid #e5e7eb;
+        text-align: center;
+        font-size: 9pt;
+        color: #9ca3af;
+      }
+
+      /* Info Grid */
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 15px 0;
+        font-size: 10pt;
+      }
+
+      .info-item {
+        padding: 10px;
+        background: #f9fafb;
+        border-radius: 4px;
+      }
+
+      .info-label {
+        font-weight: 600;
+        color: #6b7280;
+        margin-bottom: 4px;
+      }
+
+      .info-value {
+        color: #1f2937;
+      }
+
+      /* Page break control */
+      .page-break {
+        page-break-after: always;
+      }
+
+      @media print {
+        .container {
+          padding: 10mm;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🔒 SECURITY ASSESSMENT REPORT</h1>
+        <div class="subtitle">Executive / Management Summary</div>
+      </div>
+
+      <!-- System Information -->
+      <div class="section">
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">System Assessed</div>
+            <div class="info-value">{{ system_name }}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Assessment Date</div>
+            <div class="info-value">{{ assessment_date }}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Scope</div>
+            <div class="info-value">{{ scope }}</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Report Generated</div>
+            <div class="info-value">{{ generated_date }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. Executive Summary -->
+      <div class="section">
+        <h2 class="section-title">
+          <span class="section-icon">📋</span>1. Executive Summary
+        </h2>
+        <div class="summary-box">{{ executive_summary | safe }}</div>
+      </div>
+
+      <!-- 2. Overall Risk Rating -->
+      <div class="section">
+        <h2 class="section-title">
+          <span class="section-icon">⚠️</span>2. Overall Risk Rating
+        </h2>
+
+        <div style="text-align: center; margin: 20px 0">
+          <div class="risk-badge risk-{{ risk_level.lower() }}">
+            Risk Level: {{ risk_level.upper() }}
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <img
+            src="data:image/png;base64,{{ chart_security_score }}"
+            alt="Security Score"
+            style="max-width: 600px"
+          />
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="section page-break">
+        <h2 class="section-title">
+          <span class="section-icon">📊</span>Vulnerability Analysis
+        </h2>
+
+        <div class="chart-container">
+          <img
+            src="data:image/png;base64,{{ chart_risk_distribution }}"
+            alt="Risk Distribution"
+          />
+        </div>
+
+        <div class="chart-container">
+          <img
+            src="data:image/png;base64,{{ chart_severity_bar }}"
+            alt="Severity Breakdown"
+          />
+        </div>
+      </div>
+
+      <!-- 3. Top Critical Risks -->
+      <div class="section">
+        <h2 class="section-title">
+          <span class="section-icon">🔴</span>3. Top Critical Risks
+        </h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 10%">ID</th>
+              <th style="width: 35%">Risk</th>
+              <th style="width: 15%">Severity</th>
+              <th style="width: 40%">Business Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for vuln in vulnerabilities[:5] %}
+            <tr>
+              <td><strong>{{ vuln.id }}</strong></td>
+              <td>{{ vuln.name }}</td>
+              <td>
+                <span
+                  class="severity-cell severity-{{ vuln.severity.lower() }}"
+                >
+                  {{ vuln.severity }}
+                </span>
+              </td>
+              <td>{{ vuln.impact }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 4. Business Impact Analysis -->
+      <div class="section">
+        <h2 class="section-title">
+          <span class="section-icon">💼</span>4. Business Impact Analysis
+        </h2>
+
+        <div class="impact-grid">
+          <div class="impact-card">
+            <h4>💰 Financial Impact</h4>
+            <p>{{ business_impact.financial }}</p>
+          </div>
+
+          <div class="impact-card">
+            <h4>🏢 Reputation Impact</h4>
+            <p>{{ business_impact.reputation }}</p>
+          </div>
+
+          <div class="impact-card">
+            <h4>⚖️ Legal/Compliance</h4>
+            <p>{{ business_impact.legal }}</p>
+          </div>
+
+          <div class="impact-card">
+            <h4>🚨 Worst-Case Scenario</h4>
+            <p>{{ business_impact.worst_case }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Actions Required -->
+      <div class="section">
+        <h2 class="section-title">
+          <span class="section-icon">✅</span>5. Actions Required
+        </h2>
+
+        {% for action in actions_required %}
+        <div class="action-item">
+          <strong>{{ action.action }}</strong>
+          <div class="action-meta">
+            <strong>Deadline:</strong> {{ action.deadline }} |
+            <strong>Responsible:</strong> {{ action.responsible }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          <strong>CONFIDENTIAL</strong> - This report contains sensitive
+          security information
+        </p>
+        <p>Generated on {{ generated_date }} | For management review only</p>
+      </div>
+    </div>
+  </body>
+</html>
